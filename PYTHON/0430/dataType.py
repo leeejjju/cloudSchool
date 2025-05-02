@@ -37,10 +37,3 @@ print(limited)
 limited.append(5)
 print(limited)
 
-#튜플플님
-tup = (1, 2, 3, 4, 5)
-# tup[3] = 5 #err!! 튜플은 이뮤터블입니당  
-print(tup[3])
-
-
-
