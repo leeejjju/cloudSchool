@@ -1,0 +1,36 @@
+=========================
+Regular Expression
+=========================
+
+# =========================================#
+# Date: 2025-05-28
+# Author: JJLee 
+# Description: regular expression test file 
+# =========================================#
+  
+[default]
+[API]
+[0101110]
+
+Today is 28-May-2025
+Current time is 11:30 
+This is an example file for testing regular expression. This example file includes control characters 
+
+
+# System Information
+CPU model is Intel(R) core(TM) i7-8665U CPU @ 1.906GHz
+Memory size is 32GiB
+Disk is 512 GB
+IP Address is 192.168.200.11 
+
+# Help
+Do you have any questions? or Do you need any help?
+If you have any questions, Please send a mail to the ename below.
+
+# Contacts 
+e-mail: leeejjju@gmail.com 
+phone: 010-1234-1234
+
+
+
+

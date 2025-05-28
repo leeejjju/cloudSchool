@@ -1,0 +1,8 @@
+hello world
+this is original file... 
+data2 is hard link, 
+and data3 is symbolic link.
+you can check that my i-node and data2's i-node is same but data3's one is diffrence. 
+command is like that -> `ls -l -i` 
+and... data4 is simply copyed one :D 
+
