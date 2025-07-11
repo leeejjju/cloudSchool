@@ -1,0 +1,15 @@
+apiVersion: batch/v1 # new!
+kind: Job
+metadata:
+  name: pi
+spec:
+  template:
+    # 통신을 안 하면 label이 필요 업슴 
+    spec:
+      containers:
+        - name: pi
+          image: perl:5.34.0
+          command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never # new!
+  backoffLimit: 4 # 이게뭐묘 
+

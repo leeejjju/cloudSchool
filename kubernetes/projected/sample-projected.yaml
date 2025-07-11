@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-projected
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:1.16
+      volumeMounts:
+        - mountPath: /srv
+          name: projected-volume
+  volumes:
+    - name: projected-volume
+      projected:
+        sources:
+          - secret:
+              name: sample-db-auth # 이 secret에서 ...
+              items: # 일부만 가져올거라면 추가
+                - key: username # 이 값을... (지정 안하면 전부)
+                  path: secret/username.txt # 이 이름으로 저장할 것임
+          - configMap:
+              name: sample-configmap # 이 configmap에서...
+              # items:
+              # - key: nginx.conf # 이 설정파일을...
+              #   path: configmap/nginx.conf # 여기다 킵해둘거임 ㅇㅇ
+          - downwardAPI:
+              items:
+                - path: "podname" # 이 이름으로 저장할거임...
+                  fieldRef:
+                    fieldPath: metadata.name # 매니패스트 정보의 이 부분을...
+

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sample-pv
+  labels:
+    type: gce-pv # Google Cloud의 Persistent Volume
+    environment: stg # storage? 
+spec:
+  capacity:
+    storage: 10Gi # byte 아니고 i -> 걍 국룰 
+  accessModes:
+    - ReadWriteOnce # 하나씩 순차적으로 읽고 쓰겠다 
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+
+  # 플러그인별 설정
+  gcePersistentDisk:
+    pdName: sample-gce-pv
+    fsType: ext4 # file system 종류 
+
+

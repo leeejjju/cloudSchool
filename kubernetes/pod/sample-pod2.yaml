@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod2
+spec:
+  containers:
+    - name: nginx-container-200
+      image: nginx:1.16
+    - name: redis-container-200
+      image: redis

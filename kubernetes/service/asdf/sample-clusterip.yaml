@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: sample-clusterip
+spec:
+  type: ClusterIP
+  ports:
+    - name: "http-port" 
+      protocol: "TCP"
+      port: 8080 # 밖에 노출될 포트 
+      targetPort: 80 # pod 내부 포트  
+  selector:
+    app: sample-app  # 대상 기준이 되는 라벨. 이걸 잘 써줘야 함. 

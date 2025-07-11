@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: sample-session-affinity
+spec:
+  sessionAffinity: ClientIP
+  sessionAffinityConfig: 
+    clientIP:
+      timeoutSeconds: 10 
+    # 동일한 IP에서 10초 이내의 요청은 동일한 파드로 전송하겠다는 뜻 
+  type: LoadBalancer
+  externalTrafficPolicy: Local # 노드간 로드밸런싱을 하지 않음 
+  ports:
+    - name: "http-port" 
+      protocol: "TCP"
+      port: 8080
+      targetPort: 80 
+      nodePort: 30089
+  selector:
+    app: sample-app  

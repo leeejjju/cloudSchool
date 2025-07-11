@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sample-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-app # 이름을 지정?
+  template:
+    metadata:
+      labels:
+        app: sample-app # selector의 matchLabels와 맞아야 함 
+    spec: # pod설정에서 쓰던 그거를 template 안에 집어넣기 
+      containers:
+        - name: nginx-container
+          image: nginx:1.16
+

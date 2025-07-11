@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod2-fail
+spec:
+  containers:
+    - name: nginx-container-112
+      image: nginx:1.16
+    - name: redis-container-113
+      image: redis:1.17
