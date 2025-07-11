@@ -1,0 +1,27 @@
+apiVersion: batch/v1 # new!
+kind: CronJob
+metadata:
+  name: sample-cronjob
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Allow # 병렬 수행을 허용하겠다~
+  startingDeadlineSeconds: 30 # 30초동안 실행이 안 되면 나가리로 치겠다~
+  successfulJobsHistoryLimit: 5 # 성공한 job을 몇개까지 보관하는가. 기본값 3
+  failedJobsHistoryLimit: 5 # 실패한 job을 몇개까지 보관하는가. 기본값 3. 
+  suspend: false # 일시정지 여부 
+  jobTemplate:
+    spec:
+      completions: 1 # job이 성공해야 하는 총 횟수. 기본값 1. 
+      parallelism: 1 # 동시에 실행될 수 있는 pod수의 최대치. -
+      backoffLimit: 0 # 실패했을 때 다시 시도할 최대 횟수. 기본값 6. 
+      template:
+        spec:
+          containers:
+            - name: sample-cronjob
+              image: busybox
+              imagePullPolicy: IfNotPresent # 이미지가 없을 때만 내려가겠다
+              command:
+                - /bin/sh
+                - -c # 특수문자가 있을 때 주는 옵션
+                - date; echo Hello from the Kubernetes Cluster
+          restartPolicy: OnFailure

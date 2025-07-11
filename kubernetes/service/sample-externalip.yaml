@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: sample-externalip
+spec:
+  type: ClusterIP
+  externalIPs: 
+    - 10.0.10.100
+  ports:
+    - name: "http-port" 
+      protocol: "TCP"
+      port: 8080
+      targetPort: 80 
+  selector:
+    app: sample-app  # 대상 기준이 되는 라벨?

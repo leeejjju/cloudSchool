@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-pv-readonlymany-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-app # 나중에 서비스 쓸 때는 이걸 가지고 연결 
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:1.16
+          volumeMounts:
+            - mountPath: "/usr/share/nginx/html" # pod에서 마운트할 path 설정
+              name: nginx-pv
+      volumes: 
+        - name: nginx-pv
+          persistentVolumeClaim:  # 여기다가 아까 만든 영구볼륨을 기입 
+            claimName: sample-pv
+            readOnly: true

@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sample-headless-statefulset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-app1
+  template:
+    metadata:
+      labels:
+        app: sample-app1
+    spec:
+      containers:
+        - name: nginx-container
+          image: amsy810/echo-nginx:v2.0 

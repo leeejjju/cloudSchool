@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: prometheus-daemonset
+spec:
+  selector:
+    matchLabels:
+      tier: monitoring #모니터링용이라고 써준겁니다 
+      name: prometheus-exporter
+  template:
+    metadata:
+      labels:
+        tier: monitoring #모니터링용이라고 써준겁니다 
+        name: prometheus-exporter
+    spec:
+      containers:
+        - name: protetheus
+          image: prom/node-exporter
+          ports: 
+            - containerPort: 80
+
