@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytodo-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      my_todo: frontend
+  template:
+    metadata:
+      labels:
+        my_todo: frontend
+    spec:
+      containers:
+        - name: mytodo-frontend00
+          image: leeejjju/my_todo-frontend:latest

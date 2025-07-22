@@ -1,0 +1,4 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sample-namespace #근데 이것보단 cli가 간편하죠?

@@ -1,0 +1,12 @@
+# configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mytodo-config
+data:
+  MYSQL_DATABASE: todo_maria
+  SPRING_DATASOURCE_USERNAME: root
+  REACT_APP_API_BASE_URL: http://frontend.default.svc.cluster.local
+  REACT_APP_API_BASE_URL_READ: http://read-backend.default.svc.cluster.local
+  REACT_APP_API_BASE_URL_WRITE: http://write-backend.default.svc.cluster.local
+
