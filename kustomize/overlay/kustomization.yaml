@@ -1,0 +1,11 @@
+bases:
+  - ../resources/
+
+patchesStrategicMerge:
+  - ./patch-replicas.yaml
+
+resources:
+  - sample-deployment.yaml
+  - sample-lb.yaml
+
+
